@@ -26,3 +26,5 @@ services:
       - POSTGRES_DB=TokenBasedAuth
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin123
+    ports:
+    - "5432:5432"
