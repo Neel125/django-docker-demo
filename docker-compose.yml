@@ -2,6 +2,7 @@ version: "3"
 
 services:
   app:
+    image: token_auth:1.3
     build:
       context: .
     ports:
@@ -21,10 +22,14 @@ services:
       - db
 
   db:
-    image: postgres:10-alpine
+    image: postgres:12.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=TokenBasedAuth
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=admin123
     ports:
     - "5432:5432"
+volumes:
+  postgres_data:
